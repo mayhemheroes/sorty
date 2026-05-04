@@ -3,6 +3,8 @@ FROM golang:1.24 as builder
 COPY . /sorty
 WORKDIR /sorty/mayhem
 
+ENV GOFLAGS=-mod=mod
+
 RUN go install github.com/dvyukov/go-fuzz/go-fuzz@latest github.com/dvyukov/go-fuzz/go-fuzz-build@latest
 RUN go get github.com/dvyukov/go-fuzz/go-fuzz-dep
 RUN go get github.com/AdaLogics/go-fuzz-headers
